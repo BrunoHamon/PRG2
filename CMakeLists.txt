@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.26)
-project(prg2 C)
+project(untitled C)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(Teste.c)
+add_executable(untitled main.c
+        bibli.c
+        bibli.h)

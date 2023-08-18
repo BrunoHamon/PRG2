@@ -1,11 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
+//
+// Created by aluno on 18/08/23.
+//
 
-typedef struct no{
-    int Ni, Np;
-    struct no * aux;
-} noh; //tipo de nó
-
+#include "bibli.h"
 
 void push(noh ** x, int Ni){
     noh * i;
@@ -45,26 +42,25 @@ int print2(noh * y){
     return Valor;
 }
 
-
-int main() {
-
-    noh * x = NULL;
-    noh * y = NULL;
-
-    int CB[13] = {0};
-
+void messagem_inicial() {
     printf("Entre com o codigo de barras: ");
+}
 
-    for (int i = 0; i < 13; ++i) {
-        scanf("%1d", &CB[i]);
+void le_vetor(int vet[]) {
+    int i;
+    for (i = 0; i < 13; ++i) {
+        scanf("%1d", &vet[i]);
     }
+}
 
+void CB_lido(int vet[]) {
     for (int i = 0; i < 13; ++i) {
-        printf("%d", CB[i]);
+        printf("%d", vet[i]);
     }
-
     printf("\n");
+}
 
+int calc(noh * x, noh * y, int CB[]) {
     for (int i = 0; i < 12; ++i) {
         if((i % 2)==0){
             push(&x,CB[i]);
@@ -81,11 +77,13 @@ int main() {
     Par = Par % 10;
     Par = 9 - Par;
 
-    if(Par == CB[12]){
+    return Par;
+}
+
+void resposta(noh * x, noh * y, int CB[]) {
+    if(calc(x, y, &CB[0]) == CB[12]){
         printf("CODIGO VALIDO");
     } else{
-        printf("Codigo invalido");
+        printf("CODIGO INVALIDO");
     }
-
-    return 0;
 }
