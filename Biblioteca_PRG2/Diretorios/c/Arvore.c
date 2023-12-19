@@ -1,7 +1,7 @@
 //
 // Created by aluno on 08/12/23.
 //
-#include "../include/arvore.h"
+#include "/Dir"
 
 
 no_t *criar_no(int valor){
